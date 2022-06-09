@@ -1,17 +1,9 @@
-import { useState, useEffect } from 'react';
+import React from 'react'
+
+const API_URL = `http://www.omdbapi.com?apikey=${process.env.REACT_APP_API_KEY}`;
 
 export const App = () => {
-  const [counter, setCounter] = useState(0);
-
-  useEffect(() => {
-    console.log('new counter value', counter)
-  }, [counter]);
-
   return (
-    <div>
-      <button onClick={() => setCounter((item) => item-1)}>-</button>
-      <h1>{counter}</h1>
-      <button onClick={() => setCounter((item) => item+1)}>+</button>
-    </div>
+    <div>key: {API_URL}</div>
   )
 }
