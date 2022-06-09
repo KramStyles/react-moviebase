@@ -1,4 +1,4 @@
-import {useEffect} from 'react'
+import { useEffect, useState } from 'react'
 
 import { MovieCard } from "./MovieCard";
 import SearchIcon from "./search.svg";
@@ -17,15 +17,19 @@ const movie = {
 
 export const App = () => {
 
+  const [movies, setMovies] = useState([])
+
   const findMovies = async (movieTitle) => {
     const response = await fetch(`${API_URL}&s=${movieTitle}`);
     const data = await response.json();
 
-    console.log(data.Search);
+    setMovies(data.Search);
+    console.log(movies)
   }
 
-  useEffect(()=>{
-    // findMovies('avengers');
+  useEffect(() => {
+    findMovies('avengers');
+
   }, []);
 
   return (
@@ -33,13 +37,22 @@ export const App = () => {
       <h1>MovieBase</h1>
 
       <div className="search">
-        <input placeholder="Input movie name" value='The Avengers' onChange={() => {}}/>
-        <img src={SearchIcon} alt="search Icon" onClick={() => {}}/>
+        <input placeholder="Input movie name" value='The Avengers' onChange={() => { }} />
+        <img src={SearchIcon} alt="search Icon" onClick={() => { }} />
       </div>
 
-      <div className="container">
-        <MovieCard movie={movie}/>
-      </div>
+      {
+        movies.length > 0 ? <div className="container">
+          <MovieCard movie={movies[1]} />
+        </div> :
+         (
+           <div className='empty'>
+             <h2>No Movies Found!</h2>
+           </div>
+         )
+      }
+
+
     </div>
   )
 }
