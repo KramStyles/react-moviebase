@@ -6,6 +6,14 @@ import './App.css';
 
 const API_URL = `http://www.omdbapi.com?apikey=${process.env.REACT_APP_API_KEY}`;
 
+const movie = {
+  "Title" : "Amazing Spiderman Syndrome",
+  "Year" : "2012",
+  "imdbID" : "tt25884554",
+  "Type" : "movie",
+  "Poster" : "N/A",
+}
+
 export const App = () => {
 
   const findMovies = async (movieTitle) => {
@@ -16,7 +24,7 @@ export const App = () => {
   }
 
   useEffect(()=>{
-    // findMovies('marvel');
+    // findMovies('avengers');
   }, []);
 
   return (
@@ -24,8 +32,28 @@ export const App = () => {
       <h1>MovieBase</h1>
 
       <div className="search">
-        <input placeholder="Input movie name" value='Marvel' onChange={() => {}}/>
-        <img src={SearchIcon} alt="search Icon"/>
+        <input placeholder="Input movie name" value='The Avengers' onChange={() => {}}/>
+        <img src={SearchIcon} alt="search Icon" onClick={() => {}}/>
+      </div>
+
+      <div className="container">
+        <div className='movie'>
+          <div>
+            <p>{movie.Year}</p>
+          </div>
+
+          <div>
+            <img src={movie.Poster !== 'N/A' ? movie.Poster : 'https://via.placeholder.com/400'} alt={movie.Title} />
+          </div>
+
+          <div>
+            <span>{movie.Type}</span>
+            <h3>{movie.Title}</h3>
+          </div>
+
+        </div>
+
+        
       </div>
     </div>
   )
