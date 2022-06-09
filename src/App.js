@@ -1,7 +1,13 @@
-import React from 'react'
+import { useState } from 'react';
 
-export default function App() {
+export const App = () => {
+  const [counter, setCounter] = useState(0);
+
   return (
-    <div>App</div>
+    <div>
+      <button onClick={() => setCounter((item) => item-1)}>-</button>
+      <h1>{counter}</h1>
+      <button onClick={() => setCounter((item) => item+1)}>+</button>
+    </div>
   )
 }
