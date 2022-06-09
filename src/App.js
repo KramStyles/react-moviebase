@@ -1,5 +1,9 @@
 import {useEffect} from 'react'
 
+// import MovieCard from "./MovieCard";
+// import SearchIcon from "./search.svg";
+import './App.css';
+
 const API_URL = `http://www.omdbapi.com?apikey=${process.env.REACT_APP_API_KEY}`;
 
 export const App = () => {
@@ -16,6 +20,8 @@ export const App = () => {
   }, []);
 
   return (
-    <div>key: {API_URL}</div>
+    <div className='app'>
+      <h1>MovieBase</h1>
+    </div>
   )
 }
