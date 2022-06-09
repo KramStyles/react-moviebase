@@ -17,14 +17,17 @@ const movie = {
 
 export const App = () => {
 
-  const [movies, setMovies] = useState([])
+  const [movies, setMovies] = useState([]);
+  const [term, setTerm] = useState('');
 
   const findMovies = async (movieTitle) => {
-    const response = await fetch(`${API_URL}&s=${movieTitle}`);
-    const data = await response.json();
+    if (!movieTitle) alert("Let's be guided please. Enter a movie name!!")
+    else {
+      const response = await fetch(`${API_URL}&s=${movieTitle}`);
+      const data = await response.json();
 
-    setMovies(data.Search);
-    console.log(movies)
+      setMovies(data.Search);
+    }
   }
 
   useEffect(() => {
@@ -37,8 +40,8 @@ export const App = () => {
       <h1>MovieBase</h1>
 
       <div className="search">
-        <input placeholder="Input movie name" value='The Avengers' onChange={() => { }} />
-        <img src={SearchIcon} alt="search Icon" onClick={() => { }} />
+        <input placeholder="The Avengers" value={term} onChange={(e) => setTerm(e.target.value)} />
+        <img src={SearchIcon} alt="search Icon" onClick={() => findMovies(term)} />
       </div>
 
       {
@@ -47,11 +50,11 @@ export const App = () => {
             <MovieCard movie={movie} />
           ))}
         </div> :
-         (
-           <div className='empty'>
-             <h2>No Movies Found!</h2>
-           </div>
-         )
+          (
+            <div className='empty'>
+              <h2>No Movies Found!</h2>
+            </div>
+          )
       }
 
 
