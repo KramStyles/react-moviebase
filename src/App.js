@@ -6,6 +6,13 @@ import './App.css';
 
 const API_URL = `http://www.omdbapi.com?apikey=${process.env.REACT_APP_API_KEY}`;
 
+const movie = {
+  "Title": "Amazing Spiderman Syndrome",
+  "Year": "2012",
+  "imdbID": "tt25884554",
+  "Type": "movie",
+  "Poster": "N/A",
+}
 
 
 export const App = () => {
@@ -31,7 +38,7 @@ export const App = () => {
       </div>
 
       <div className="container">
-        <MovieCard />
+        <MovieCard movie={movie}/>
       </div>
     </div>
   )

@@ -1,14 +1,6 @@
 import React from 'react'
 
-const movie = {
-    "Title": "Amazing Spiderman Syndrome",
-    "Year": "2012",
-    "imdbID": "tt25884554",
-    "Type": "movie",
-    "Poster": "N/A",
-}
-
-export const MovieCard = () => {
+export const MovieCard = ({ movie }) => { // Use array destructuring 
     return (
         <div className='movie'>
             <div>
