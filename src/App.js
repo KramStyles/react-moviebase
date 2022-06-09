@@ -43,7 +43,9 @@ export const App = () => {
 
       {
         movies.length > 0 ? <div className="container">
-          <MovieCard movie={movies[1]} />
+          {movies.map((movie) => (
+            <MovieCard movie={movie} />
+          ))}
         </div> :
          (
            <div className='empty'>
