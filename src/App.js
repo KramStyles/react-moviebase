@@ -1,7 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export const App = () => {
   const [counter, setCounter] = useState(0);
+
+  useEffect(() => {
+    console.log('new counter value', counter)
+  }, [counter]);
 
   return (
     <div>
